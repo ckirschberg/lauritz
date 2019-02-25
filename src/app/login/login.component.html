@@ -1,6 +1,21 @@
-<form >
-  <input type="text" name="username" placeholder="Username">
-  <input type="password" name="password" placeholder="Password">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type="text" name="username" 
+    placeholder="Username" formControlName="username">
+  
+    <!-- <p *ngIf="loginForm.controls.username.errors?.required && submitted"> -->
+    <p *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+      Username must be filled out
+    </p>
+    <p *ngIf="loginForm.controls.username.errors?.minlength && loginForm.controls.username.touched">
+      Username must be 3 characters or more
+    </p>
+
+    <input type="password" name="password" placeholder="Password"
+      formControlName="password">
+
+    <p *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
+
+    </p>
   
   <button>Login</button>
 </form>
