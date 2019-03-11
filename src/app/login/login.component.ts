@@ -39,16 +39,20 @@ export class LoginComponent implements OnInit {
       // navigate after successful login.
 
       console.log("First")
-      this.authService.login().subscribe(result => {
-        console.log("Third");
-        if (result) {
-          let url = this.authService.redirectUrl ? this.authService.redirectUrl : '/portal/display-auctions';
-          this.router.navigate([url]); // Use the router to go to a route, home.
-        }
-        else {
-          // Invalid login
-        }
-      });
+      if (this.loginForm.value.username === 'admin') {
+        // call the admin authService.
+      } else {
+        this.authService.login().subscribe(result => {
+          console.log("Third");
+          if (result) {
+            let url = this.authService.redirectUrl ? this.authService.redirectUrl : '/portal/display-auctions';
+            this.router.navigate([url]); // Use the router to go to a route, home.
+          }
+          else {
+            // Invalid login
+          }
+        });
+      }
       console.log("Second")
 
       
