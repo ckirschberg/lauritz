@@ -12,6 +12,8 @@ import { MatDividerModule, MatCardModule, MatSnackBarModule, MatButtonModule, Ma
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { MikkelComponent } from './mikkel/mikkel.component';
+import { NikeComponent } from './nike/nike.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    MikkelComponent,
+    NikeComponent
   ],
   imports: [
     BrowserModule,
