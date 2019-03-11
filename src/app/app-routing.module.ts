@@ -1,25 +1,29 @@
+import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
-import { MikkelComponent } from './mikkel/mikkel.component';
-import { NikeComponent } from './nike/nike.component';
+import { PortalComponent } from './portal/portal.component';
+import { CreateAuctionComponent } from './portal/create-auction/create-auction.component';
+import { DisplayAuctionsComponent } from './portal/display-auctions/display-auctions.component';
+
 
 // Defining your routes
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   
-  
-  { path: 'login', component: LoginComponent, children: [
-    { path: 'mikkel', component: MikkelComponent },
-    { path: 'nike', component: NikeComponent },
+  {path: 'home', component: HomeComponent, children:[
+    {path: 'register', component: RegisterComponent},
+    { path: 'login', component: LoginComponent}
   ]},
 
-  {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent},
-  
+  {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:[
+    {path: 'create-auction', component: CreateAuctionComponent},
+    { path: 'display-auctions', component: DisplayAuctionsComponent}
+  ]},
+
   
   { path: '**', component: PageNotFoundComponent }
  ];

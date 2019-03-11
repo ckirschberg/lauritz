@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login', // name of component
@@ -9,10 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm;
+  loginForm: FormGroup;
 
   // DI - Dependency injection
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -35,7 +37,21 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       // Send the data to the server to verify the user login
       // navigate after successful login.
-      this.router.navigate(['home']); // Use the router to go to a route, home.
+
+      console.log("First")
+      this.authService.login().subscribe(result => {
+        console.log("Third");
+        if (result) {
+          let url = this.authService.redirectUrl ? this.authService.redirectUrl : '/portal/display-auctions';
+          this.router.navigate([url]); // Use the router to go to a route, home.
+        }
+        else {
+          // Invalid login
+        }
+      });
+      console.log("Second")
+
+      
 
     }
 

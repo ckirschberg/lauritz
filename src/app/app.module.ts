@@ -14,6 +14,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { MikkelComponent } from './mikkel/mikkel.component';
 import { NikeComponent } from './nike/nike.component';
+import { PortalComponent } from './portal/portal.component';
+import { CreateAuctionComponent } from './portal/create-auction/create-auction.component';
+import { DisplayAuctionsComponent } from './portal/display-auctions/display-auctions.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { NikeComponent } from './nike/nike.component';
     PageNotFoundComponent,
     HomeComponent,
     MikkelComponent,
-    NikeComponent
+    NikeComponent,
+    PortalComponent,
+    CreateAuctionComponent,
+    DisplayAuctionsComponent
   ],
   imports: [
     BrowserModule,
