@@ -9,11 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm;
 
   // DI - Dependency injection
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, 
-    private router: Router) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit() {
@@ -36,6 +35,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       // Send the data to the server to verify the user login
       // navigate after successful login.
+      this.router.navigate(['home']); // Use the router to go to a route, home.
+
     }
 
   }
