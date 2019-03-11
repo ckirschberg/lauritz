@@ -18,12 +18,10 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent}
   ]},
-
   {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children:[
     {path: 'create-auction', component: CreateAuctionComponent},
     { path: 'display-auctions', component: DisplayAuctionsComponent}
   ]},
-
   
   { path: '**', component: PageNotFoundComponent }
  ];
