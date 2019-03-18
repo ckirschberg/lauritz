@@ -39,6 +39,8 @@ export class TempDataService {
 
   addProduct(product: Product): void {
     // Should add the product to the array.
+    // push it!
+    this.products.push(product);
   }
 
   getProducts() {

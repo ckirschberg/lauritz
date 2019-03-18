@@ -1,3 +1,7 @@
-<p>
-  create-auction works!
-</p>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary">Auction my product</button>
+</form>

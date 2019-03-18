@@ -1,16 +1,16 @@
 import { User, UserVm } from './user';
 
 export class Product {
-  _id: string;
-  user: UserVm;
+  _id: string; // User does not fill out
+  user: UserVm; // User does not fill out
   name: string;
   description: string;
   startingPrice: number;
   minimumBid: number; // Increase in bid of ?
   images: string[];
-  dateCreated: Date;
+  dateCreated: Date;  // User does not fill out
   endDate: Date;
-  bids: Bid[];
+  bids: Bid[];  // User does not fill out
   location: string;
 }
 

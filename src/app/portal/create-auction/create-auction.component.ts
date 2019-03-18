@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-auction',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-auction.component.scss']
 })
 export class CreateAuctionComponent implements OnInit {
+  productForm: FormGroup;
+ 
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.productForm = this.fb.group({
+      name: ['', Validators.required]
+    })
   }
 
+  onSubmit() {
+    console.log("productForm ", this.productForm);
+  }
 }
