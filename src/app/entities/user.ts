@@ -8,7 +8,17 @@ export class User {
   phone: string;
   gender: Gender; // Male, Female
   birthDate: Date;
-  
+}
+
+export class UserVm {
+  _id: string;
+  username: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
+  gender: Gender; // Male, Female
+  birthDate: Date;
 }
 
 export enum Gender {

@@ -1,6 +1,8 @@
+import { User, UserVm } from './user';
+
 export class Product {
   _id: string;
-  sellerId: string;
+  user: UserVm;
   name: string;
   description: string;
   startingPrice: number;
