@@ -17,6 +17,8 @@ import { NikeComponent } from './nike/nike.component';
 import { PortalComponent } from './portal/portal.component';
 import { CreateAuctionComponent } from './portal/create-auction/create-auction.component';
 import { DisplayAuctionsComponent } from './portal/display-auctions/display-auctions.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductDetailsComponent } from './portal/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,15 @@ import { DisplayAuctionsComponent } from './portal/display-auctions/display-auct
     NikeComponent,
     PortalComponent,
     CreateAuctionComponent,
-    DisplayAuctionsComponent
+    DisplayAuctionsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatGridListModule, MatMenuModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatCardModule, MatDividerModule
+    MatGridListModule, MatMenuModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatCardModule, MatDividerModule, MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
