@@ -33,5 +33,12 @@ export class TempDataService {
   
   constructor() { }
 
+  addProduct(product: Product): void {
+    // Should add the product to the array.
+  }
+
+  getProducts() {
+    return this.products;
+  }
 
 }
