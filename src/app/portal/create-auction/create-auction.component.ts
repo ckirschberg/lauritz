@@ -8,13 +8,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateAuctionComponent implements OnInit {
   productForm: FormGroup;
- 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.productForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      description: ['',Validators.required],
+      startingPrice: ['',Validators.required],
+      minimumBid: ['',Validators.required],
+      endDate: ['',Validators.required],
+      location: ['',Validators.required],
     })
   }
 
