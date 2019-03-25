@@ -22,9 +22,27 @@ describe('workspace-project App', () => {
 
   it('should test ...', () => {
     // write test no. 2.
+    browser.get('/home/login');
+    
+    page.getByFormControlName('username').sendKeys('whatever');
+    // browser.sleep(1000);
+    page.getByFormControlName('password').sendKeys('whateverPassword'); // nice alternative where no id is needed.
+    // browser.sleep(1000);
+    element(by.id('btnUserlogin')).click();
+    // browser.sleep(1000);
+    expect(browser.getCurrentUrl()).toEqual(browser.baseUrl+'/portal/display-auctions');
+    // browser.sleep(1000);
+    
     
   });
 
+  it('should create a new product', () => {
+    /// Go to display-auctions. Count number of auctions.
+    // Go to create-auction. Fill out fields to create an auction.
+    // Go to display-auctions. Count number of auctions
+    // Verify that we now have on more product.
+    
+  });
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
