@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Gender } from 'src/app/entities/user';
 import { TempDataService } from 'src/app/services/temp-data.service';
 import { Product } from 'src/app/entities/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-auction',
@@ -12,7 +13,7 @@ import { Product } from 'src/app/entities/product';
 export class CreateAuctionComponent implements OnInit {
   productForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private temp: TempDataService) { }
+  constructor(private fb: FormBuilder, private temp: TempDataService, private router: Router) { }
 
   ngOnInit() {
     this.productForm = this.fb.group({
@@ -31,5 +32,7 @@ export class CreateAuctionComponent implements OnInit {
 
     console.log(product);
     console.log("productForm ", this.productForm);
+
+    this.router.navigate(['/portal/display-auctions']);
   }
 }

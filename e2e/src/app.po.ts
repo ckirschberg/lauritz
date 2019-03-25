@@ -6,7 +6,7 @@ export class AppPage {
   }
 
   getByFormControlName(name: string) {
-    return element(by.css('input[formControlName=' + name + ']'));
+    return element(by.css('[formControlName=' + name + ']'));
   }
 
   getTitleText() {

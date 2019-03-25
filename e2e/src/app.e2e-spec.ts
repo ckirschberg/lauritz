@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging, by, element } from 'protractor';
+import { browser, logging, by, element, $$ } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -41,7 +41,26 @@ describe('workspace-project App', () => {
     // Go to create-auction. Fill out fields to create an auction.
     // Go to display-auctions. Count number of auctions
     // Verify that we now have on more product.
-    
+    browser.get('/portal/display-auctions');
+    // element(by.css(''))
+    // $$('')
+    $$('.example-card').then( (elementsBeforeAdding) => {
+      let noOfElemsBefore = elementsBeforeAdding.length;
+      element(by.id('btnNewAuction')).click();
+      page.getByFormControlName('name').sendKeys('Lipstick');
+      page.getByFormControlName('description').sendKeys('It is a great lipstick');
+      page.getByFormControlName('startingPrice').sendKeys('50');
+      page.getByFormControlName('minimumBid').sendKeys('10');
+      page.getByFormControlName('endDate').sendKeys('2019-01-02');
+      page.getByFormControlName('location').sendKeys('Copenhagen');
+
+      element(by.id('btnCreateAuction')).click();
+
+      $$('.example-card').then((elementsAfterAdding) => {
+        expect(elementsAfterAdding.length - noOfElemsBefore).toEqual(1);
+      })
+
+    });
   });
 
   afterEach(async () => {
