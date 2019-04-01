@@ -16,5 +16,8 @@ export class DisplayAuctionsComponent implements OnInit {
   ngOnInit() {
     this.products = this.temp.getProducts();
   }
+  onProductClick(dataPassedToMe) {
+    console.log(dataPassedToMe);
+  }
 
 }

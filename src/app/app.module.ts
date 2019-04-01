@@ -20,6 +20,7 @@ import { DisplayAuctionsComponent } from './portal/display-auctions/display-auct
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductDetailsComponent } from './portal/product-details/product-details.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ProductComponent } from './portal/product/product.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     PortalComponent,
     CreateAuctionComponent,
     DisplayAuctionsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
