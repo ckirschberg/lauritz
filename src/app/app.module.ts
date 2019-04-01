@@ -21,6 +21,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductDetailsComponent } from './portal/product-details/product-details.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ProductComponent } from './portal/product/product.component';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { AppState } from './store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { rootReducer } from './store';
+
 
 @NgModule({
   declarations: [
@@ -42,9 +47,21 @@ import { ProductComponent } from './portal/product/product.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgReduxModule, NgReduxRouterModule.forRoot(),
     MatGridListModule, MatMenuModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatCardModule, MatDividerModule, MatTooltipModule, MatNativeDateModule, MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private ngRedux: NgRedux<AppState>,
+    // private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter,) {
+   
+    this.ngRedux.configureStore(
+      rootReducer, {});
+ 
+      ngReduxRouter.initialize(/* args */);   
+  }
+ 
+}
