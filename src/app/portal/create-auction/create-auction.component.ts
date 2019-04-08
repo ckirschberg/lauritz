@@ -4,6 +4,7 @@ import { Gender } from 'src/app/entities/user';
 import { TempDataService } from 'src/app/services/temp-data.service';
 import { Product } from 'src/app/entities/product';
 import { Router } from '@angular/router';
+import { ProductActions } from '../product.actions';
 
 @Component({
   selector: 'app-create-auction',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 export class CreateAuctionComponent implements OnInit {
   productForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private temp: TempDataService, private router: Router) { }
+  constructor(private fb: FormBuilder, private temp: TempDataService, 
+    private router: Router, private productActions: ProductActions) { }
 
   ngOnInit() {
     this.productForm = this.fb.group({
@@ -28,7 +30,9 @@ export class CreateAuctionComponent implements OnInit {
 
   onSubmit() {
     let product = this.productForm.value as Product;
-    this.temp.addProduct(product);
+
+    this.productActions.createNewProduct(product);
+    // this.temp.addProduct(product);
 
     console.log(product);
     console.log("productForm ", this.productForm);

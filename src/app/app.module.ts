@@ -21,7 +21,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductDetailsComponent } from './portal/product-details/product-details.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ProductComponent } from './portal/product/product.component';
-import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { NgRedux, NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { AppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { rootReducer } from './store';
@@ -58,6 +58,11 @@ export class AppModule {
     // private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,) {
    
+      // this.ngRedux.configureStore(
+      //   rootReducer,
+      //   {},[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+
+        
     this.ngRedux.configureStore(
       rootReducer, {});
  
