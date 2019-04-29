@@ -24,10 +24,18 @@ export function productsReducer(state: ProductState = INITIAL_STATE, action:any)
   case ProductActions.CREATE_PRODUCT:
     // Create a new array with the "old array" and the new product
     console.log(state);
-    let newProducts = [...state.products, <Product>action.payload];
+
+    let newProducts = [...state.products, action.payload];
     let newState = tassign(state, {products: newProducts});
     console.log(newState);
     return newState;
+
+
+  case ProductActions.DELETE_PRODUCT:
+    // action.payload should be productId (_id)
+    let newProductsAfterDelete = state.products.filter(product => product._id !== action.payload);
+    return tassign(state, { products: newProductsAfterDelete });
+
   // case ProductActions.LOG_IN:
     // return tassign(state, { isBaby: action.payload });
    

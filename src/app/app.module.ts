@@ -55,7 +55,7 @@ import { rootReducer } from './store';
 })
 export class AppModule { 
   constructor(private ngRedux: NgRedux<AppState>,
-    // private devTool: DevToolsExtension,
+    private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,) {
    
       // this.ngRedux.configureStore(
@@ -63,8 +63,8 @@ export class AppModule {
       //   {},[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 
         
-    this.ngRedux.configureStore(
-      rootReducer, {});
+    // this.ngRedux.configureStore(rootReducer, {});
+    this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
  
       ngReduxRouter.initialize(/* args */);   
   }

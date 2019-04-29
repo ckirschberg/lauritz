@@ -10,10 +10,15 @@ constructor (
 
   static LOG_IN: string = 'LOG_IN'; 
   static CREATE_PRODUCT: string = 'CREATE_PRODUCT';
+  static DELETE_PRODUCT: string = 'DELETE_PRODUCT';
   
   // This should be in an Auth-Section and not in the product.
   // I include it here for now, to make the first redux exercise easier.
   // Action creator - calls the redux library.
+
+
+
+
   loggedIn(isLoggedIn: boolean): void {
     console.log(isLoggedIn);
     this.ngRedux.dispatch({
@@ -28,6 +33,12 @@ constructor (
         payload: product
       }
     );
+  }
+  deleteProduct(id: string) : void {
+    this.ngRedux.dispatch({
+      type: ProductActions.DELETE_PRODUCT,
+      payload: id
+    });
   }
 
 }
