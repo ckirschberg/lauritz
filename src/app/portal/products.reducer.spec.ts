@@ -44,4 +44,13 @@ describe('products reducer', () => {
     let response = productsReducer(stateBefore, {type: types.ProductActions.CREATE_PRODUCT, payload: product});
     expect(stateAfter).toEqual(response);
   });
+
+  it('should delete a product from the products array based on an id', () => {
+    // 1: Create a start-state with some product objects (could be reduced, with fewer properties as long as you have _id)
+    // 2: Deep freeze to check for immutability
+    // 3: Create the after-state (this is our expectation of what the state should look like after calling the reducer)
+    // 4: Call the reducer
+    // 5: expect statements (assert)
+
+  });
 });
