@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { Product } from './entities/product';
 import { productsReducer } from './portal/products.reducer';
 import { UserVm } from './entities/user';
-import { usersReducer } from './portal/user.reducer';
+import { usersReducer } from './portal/users.reducer';
 
 export class UserState {
   users: UserVm[];

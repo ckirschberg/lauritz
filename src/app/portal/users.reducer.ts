@@ -1,9 +1,9 @@
 import { ProductActions } from './product.actions';
 import { tassign } from 'tassign';
-import { ProductState, UserState } from './../store';
+import { ProductState, UserState } from '../store';
 import { Product } from '../entities/product';
 import { TempDataService } from '../services/temp-data.service';
-import { UserActions } from './user.actions';
+import { UsersActions } from './users.actions';
 
 // State at startup.
 // const ds = new TempDataService();
@@ -12,7 +12,7 @@ const INITIAL_STATE: UserState = {users: []}
 export function usersReducer(state: UserState = INITIAL_STATE, action:any) {
  
   switch (action.type) {
-    case UserActions.RATE_USER:
+    case UsersActions.RATE_USER:
     // action.payload.userId
     // action.payload.rating
     // Find the user object that matches the userId

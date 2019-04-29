@@ -5,14 +5,14 @@ import { Product } from '../entities/product';
 import { Rating } from '../entities/user';
 
 @Injectable({ providedIn: 'root'})
-export class UserActions {
+export class UsersActions {
 constructor (
   private ngRedux: NgRedux<AppState>) {} 
 
   static RATE_USER: string = 'RATE_USER'
   
   rateUser(userId: string, rating: Rating) {
-    this.ngRedux.dispatch({type:  UserActions.RATE_USER, payload: {userId, rating} });
+    this.ngRedux.dispatch({type:  UsersActions.RATE_USER, payload: {userId, rating} });
   }
 
 }
