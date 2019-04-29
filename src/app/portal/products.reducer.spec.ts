@@ -52,5 +52,39 @@ describe('products reducer', () => {
     // 4: Call the reducer
     // 5: expect statements (assert)
 
+      let beforeState = {products: [{_id: '1', name: 'Hair Brush'},{_id: '2', name: 'Nail conditioner'},{_id: '3', name: 'Nail psykologist'}]} as ProductState;
+      deepFreeze(beforeState);
+      let afterState = {products: [{_id: '1', name: 'Hair Brush'},{_id: '3', name: 'Nail psykologist'}]};
+      let response = productsReducer(beforeState, {type: types.ProductActions.DELETE_PRODUCT, payload: '2'})
+      
+      expect(afterState).toEqual(response);
+  });
+
+  it('should update a product object', () => {
+    let beforeState = {products: [{_id: '1', name: 'Hair Brush'},
+    {_id: '2', name: 'Nail conditioner'},
+    {_id: '3', name: 'Nail psykologist'}]} as ProductState;
+    deepFreeze(beforeState);
+
+    let afterState = {products: [{_id: '1', name: 'Hair Brush'},
+    {_id: '2', name: 'Nail conditioner'},
+    {_id: '3', name: 'Nail polish'}]} as ProductState;
+    
+    let response = productsReducer(beforeState, {type: types.ProductActions.UPDATE_PRODUCT, 
+      payload: {_id: '3', name: 'Nail polish'}})
+    
+      expect(afterState).toEqual(response);
+  });
+
+
+
+  it('should test slice', () => {
+    let array = ['hat', 'cat', 'sad', 'dog'];
+    let pos = array.findIndex(x => x === 'sad');
+    let array2 = [...array.slice(0, pos), 'hi', ...array.slice(pos+1)];
+
+    expect(array2).toEqual(['hat', 'cat', 'hi', 'dog']);
+
+
   });
 });

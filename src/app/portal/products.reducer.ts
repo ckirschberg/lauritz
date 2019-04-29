@@ -31,8 +31,26 @@ export function productsReducer(state: ProductState = INITIAL_STATE, action:any)
     return newState;
 
 
+  case ProductActions.UPDATE_PRODUCT:
+    //action.payload is a product object
+    
+
+
+
+    let stateUpdate = [...state.products];
+    let index = stateUpdate.findIndex(prod => prod._id === action.payload._id);
+    stateUpdate[index] = action.payload;
+    return tassign(state, {products: stateUpdate} );
+    
+    
+    // let stateAfter = [...stateUpdate.slice(0,index), action.payload, stateUpdate.slice(index+1)];
+
+
+
+
   case ProductActions.DELETE_PRODUCT:
     // action.payload should be productId (_id)
+    
     let newProductsAfterDelete = state.products.filter(product => product._id !== action.payload);
     return tassign(state, { products: newProductsAfterDelete });
 

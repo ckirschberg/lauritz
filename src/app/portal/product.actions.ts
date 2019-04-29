@@ -11,6 +11,7 @@ constructor (
   static LOG_IN: string = 'LOG_IN'; 
   static CREATE_PRODUCT: string = 'CREATE_PRODUCT';
   static DELETE_PRODUCT: string = 'DELETE_PRODUCT';
+  static UPDATE_PRODUCT: string = 'UPDATE_PRODUCT';
   
   // This should be in an Auth-Section and not in the product.
   // I include it here for now, to make the first redux exercise easier.
@@ -34,6 +35,13 @@ constructor (
       }
     );
   }
+  updateProduct(product: Product) : void {
+    this.ngRedux.dispatch({
+      type: ProductActions.UPDATE_PRODUCT,
+      payload: product
+    });
+  }
+
   deleteProduct(id: string) : void {
     this.ngRedux.dispatch({
       type: ProductActions.DELETE_PRODUCT,

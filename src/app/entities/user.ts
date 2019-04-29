@@ -9,6 +9,7 @@ export class User {
   gender: Gender; // Male, Female
   birthDate: Date;
   profileImage: string;
+  ratings: Rating[];
 }
 
 export class UserVm {
@@ -20,6 +21,20 @@ export class UserVm {
   phone: string;
   gender: Gender; // Male, Female
   birthDate: Date;
+  profileImage: string;
+  ratings: Rating[];
+}
+
+export class Rating {
+  date: Date;
+  user: UserRating;
+  description: string;
+  grade: number; // 1-5 'stars'
+}
+
+export class UserRating {
+  _id: string;
+  username: string;
   profileImage: string;
 }
 
