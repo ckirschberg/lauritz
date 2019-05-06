@@ -6,14 +6,26 @@ import { TempDataService } from '../services/temp-data.service';
 
 // State at startup.
 // const ds = new TempDataService();
-const INITIAL_STATE: ProductState = {isLoggedIn: undefined, products: TempDataService.products };
+const INITIAL_STATE: ProductState = {isLoggedIn: undefined, products: TempDataService.products, isLoading: false };
 
 export function productsReducer(state: ProductState = INITIAL_STATE, action:any) {
  
   switch (action.type) {
   case ProductActions.LOG_IN:
     console.log(action.payload);
-    
+
+    case ProductActions.GET_PRODUCTS_LOADING:
+      return tassign(state, {isLoading: true});
+
+    case ProductActions.GET_PRODUCTS_SUCCESS:
+      console.log(action.payload);
+      
+      return tassign(state, {products: action.payload, isLoading: false });
+
+    case ProductActions.GET_PRODUCTS_FAILURE:
+      console.log(action.payload);
+      return tassign(state, {isLoading: false});
+      
     // Not allowed. Cannot change state in reducer. Must make a copy.
     // state.isLoggedIn = action.payload;
     // return state;

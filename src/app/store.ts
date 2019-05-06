@@ -11,6 +11,7 @@ export class UserState {
 export class ProductState {
   products: Product[];
   isLoggedIn: boolean; // Should be in an auth section and not in products
+  isLoading: boolean;
 }
 export class AppState {
   products?: ProductState;

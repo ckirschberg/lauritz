@@ -35,15 +35,13 @@ export class CreateAuctionComponent implements OnInit {
 
     console.log("1");
     this.api.createProduct(product).subscribe(resultFromWs => {
-      if (resultFromWs === "Created") {
-        console.log(resultFromWs);
-        console.log("a");
-        this.productActions.createNewProduct(product);
-        this.router.navigate(['/portal/display-auctions']);
-      }
+      console.log(resultFromWs);
+      console.log("a");
+      this.productActions.createNewProduct(resultFromWs);
+      this.router.navigate(['/portal/display-auctions']);
     }, error => {
       console.log("error", error);
-      
+
     });
 
     console.log("b");
