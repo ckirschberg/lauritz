@@ -9,16 +9,16 @@ describe('products reducer', () => {
  
   it('should return the initial state', () => {
    expect(productsReducer(undefined, {})).toEqual(
-     {isLoggedIn: undefined, products: TempDataService.products});
+     { isLoggedIn: undefined, products: TempDataService.products, isLoading: false } as ProductState);
   });
 
   it('set isLoggedIn to true', () => {
     
-    let state = {isLoggedIn: undefined, products: TempDataService.products};
+    let state = {isLoggedIn: undefined, products: TempDataService.products} as ProductState;
     deepFreeze(state);
     
     expect( productsReducer(state, { type: types.ProductActions.LOG_IN, payload: true }))
-      .toEqual({isLoggedIn: true, products: TempDataService.products});
+      .toEqual({isLoggedIn: true, products: TempDataService.products} as ProductState);
   });
 
   // Create a test to check that your create functionality works AND
@@ -41,7 +41,7 @@ describe('products reducer', () => {
 
     let stateAfter = {products: [product]};
 
-    let response = productsReducer(stateBefore, {type: types.ProductActions.CREATE_PRODUCT, payload: product});
+    let response = productsReducer(stateBefore, {type: types.ProductActions.CREATE_PRODUCT_SUCCESS, payload: product});
     expect(stateAfter).toEqual(response);
   });
 

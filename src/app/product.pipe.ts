@@ -11,7 +11,12 @@ export class ProductPipe implements PipeTransform {
     console.log(search);
 
     let result = products.filter(product => 
-      product.name.toLowerCase().includes(search.toLowerCase()));
+      product.name.toLowerCase().includes(search.toLowerCase()) || 
+      product.description.toLowerCase().includes(search.toLowerCase()) ||
+      product.location.toLowerCase().includes(search.toLowerCase()) ||
+      
+      (product.user && (product.user.firstname + " " + product.user.lastname).toLowerCase().includes(search.toLowerCase()))
+      );
     
     return result;
   }
