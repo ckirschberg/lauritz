@@ -6,7 +6,7 @@ import { Product } from './entities/product';
 })
 export class ProductPipe implements PipeTransform {
 
-  transform(products: Product[], search: any = ""): any {
+  transform(products: Product[], search: any = ""): Product[] {
     console.log(products);
     console.log(search);
 
