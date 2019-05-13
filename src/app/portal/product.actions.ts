@@ -10,7 +10,12 @@ constructor (
   private ngRedux: NgRedux<AppState>, private api: ProductsApiService) {} 
 
   static LOG_IN: string = 'LOG_IN'; 
-  static CREATE_PRODUCT: string = 'CREATE_PRODUCT';
+  
+  static CREATE_PRODUCT_LOADING: string = 'CREATE_PRODUCT_LOADING';
+  static CREATE_PRODUCT_SUCCESS: string = 'CREATE_PRODUCT_SUCCESS';
+  static CREATE_PRODUCT_FAILURE: string = 'CREATE_PRODUCT_FAILURE';
+
+
   static DELETE_PRODUCT: string = 'DELETE_PRODUCT';
   static UPDATE_PRODUCT: string = 'UPDATE_PRODUCT';
   
@@ -49,12 +54,14 @@ constructor (
     });
   }
   createNewProduct(product: Product) : void {
-    this.ngRedux.dispatch(
-      { 
-        type: ProductActions.CREATE_PRODUCT,
+    this.ngRedux.dispatch({ 
+        type: ProductActions.CREATE_PRODUCT_LOADING,
         payload: product
-      }
-    );
+      });
+
+      // Call api
+      // Dispatch action on success
+      // Dispatch action on failure
   }
   updateProduct(product: Product) : void {
     this.ngRedux.dispatch({

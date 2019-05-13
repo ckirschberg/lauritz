@@ -42,6 +42,7 @@ describe('workspace-project App', () => {
     // Go to display-auctions. Count number of auctions
     // Verify that we now have on more product.
     browser.get('/portal/display-auctions');
+    // browser.sleep(2000);
     // element(by.css(''))
     // $$('')
     $$('.example-card').then( (elementsBeforeAdding) => {
