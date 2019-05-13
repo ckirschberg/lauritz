@@ -33,7 +33,14 @@ export function productsReducer(state: ProductState = INITIAL_STATE, action:any)
     // return Object.assign({}, state, {isLoggedIn: action.payload});
     return tassign(state, { isLoggedIn: action.payload });
    
-  case ProductActions.CREATE_PRODUCT:
+  case ProductActions.CREATE_PRODUCT_FAILURE:
+    // display an error message  
+    return state;
+
+  case ProductActions.CREATE_PRODUCT_LOADING:
+    return tassign(state, {isLoading: true});
+    
+  case ProductActions.CREATE_PRODUCT_SUCCESS:
     // Create a new array with the "old array" and the new product
     console.log(state);
 

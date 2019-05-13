@@ -1,10 +1,15 @@
 
+<div>
+  <mat-form-field >
+    <input matInput placeholder="Search for item" [(ngModel)]="searchInput">
+  </mat-form-field>
+</div>
 
 <div class="card-container">
   <div *ngIf="isLoading">
     Please wait... We are loading products
   </div>
-  <div *ngFor="let p of products">
+  <div *ngFor="let p of products | productFilter: searchInput">
     
       <app-product [product]="p" (nameOfTheEventOr)="onProductClick($event)"></app-product>
     

@@ -3,11 +3,13 @@ import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store';
 import { Product } from '../entities/product';
 import { ProductsApiService } from '../services/products-api.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root'})
 export class ProductActions {
 constructor (
-  private ngRedux: NgRedux<AppState>, private api: ProductsApiService) {} 
+  private ngRedux: NgRedux<AppState>, private api: ProductsApiService,
+  private router: Router) {} 
 
   static LOG_IN: string = 'LOG_IN'; 
   
@@ -35,7 +37,7 @@ constructor (
       console.log(result);
       this.ngRedux.dispatch({
         type: ProductActions.GET_PRODUCTS_SUCCESS,
-        payload: result.filter(prod => prod.customerId === 'chrk2') })
+        payload: result.filter(prod => prod.customerId === 'chrk4') })
     }, error=> {
       this.ngRedux.dispatch({
         type: ProductActions.GET_PRODUCTS_FAILURE,
@@ -55,8 +57,21 @@ constructor (
   }
   createNewProduct(product: Product) : void {
     this.ngRedux.dispatch({ 
-        type: ProductActions.CREATE_PRODUCT_LOADING,
-        payload: product
+        type: ProductActions.CREATE_PRODUCT_LOADING
+      });
+
+      this.api.createProduct(product).subscribe(dataFromWs => {
+        this.ngRedux.dispatch({
+          type: ProductActions.CREATE_PRODUCT_SUCCESS,
+          payload: dataFromWs
+        });
+        this.router.navigate(['/portal/display-auctions']);
+
+      }, whatever => {
+        this.ngRedux.dispatch({
+          type: ProductActions.CREATE_PRODUCT_FAILURE,
+          payload: whatever
+        })
       });
 
       // Call api

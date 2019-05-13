@@ -18,7 +18,7 @@ export class ProductsApiService {
     return this.http.get(this.baseUrl) as Observable<Product[]>;
   }
   createProduct(product: Product) : Observable<any> {
-    product.customerId = 'chrk2';
+    product.customerId = 'chrk4';
     product.user = {
       _id:'1', username: 'abc', email: 'abc@kea.dk', 
       firstname: 'Asger', lastname: 'Poulsen', phone: '12121212', 
