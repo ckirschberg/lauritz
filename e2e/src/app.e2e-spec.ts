@@ -48,6 +48,7 @@ describe('workspace-project App', () => {
     $$('.example-card').then( (elementsBeforeAdding) => {
       let noOfElemsBefore = elementsBeforeAdding.length;
       element(by.id('btnNewAuction')).click();
+      // browser.sleep(4000);
       page.getByFormControlName('name').sendKeys('Lipstick');
       page.getByFormControlName('description').sendKeys('It is a great lipstick');
       page.getByFormControlName('startingPrice').sendKeys('50');

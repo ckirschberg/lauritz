@@ -13,6 +13,8 @@ export class Product {
   endDate: Date;
   bids: Bid[];  // User does not fill out
   location: string;
+
+  constructor() {}
 }
 
 export class Bid {

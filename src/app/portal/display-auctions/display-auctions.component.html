@@ -9,7 +9,7 @@
   <div *ngIf="isLoading">
     Please wait... We are loading products
   </div>
-  <div *ngFor="let p of products | productFilter: searchInput">
+  <div *ngFor="let p of products | productFilter: '1' ">
     
       <app-product [product]="p" (nameOfTheEventOr)="onProductClick($event)"></app-product>
     

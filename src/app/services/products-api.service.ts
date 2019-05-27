@@ -32,6 +32,6 @@ export class ProductsApiService {
 
   }
   deleteProduct(productId: string) {
-
+    this.http.delete(this.baseUrl + "/" + productId, {responseType: 'text'});
   }
 }

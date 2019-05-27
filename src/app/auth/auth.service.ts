@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
+import { Product } from '../entities/product';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
 
   login(): Observable<boolean> {
     console.log("login from service");
-    
+
     return of(true).pipe(
       delay(1000),
       tap(val => {

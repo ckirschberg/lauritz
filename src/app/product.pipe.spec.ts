@@ -30,5 +30,15 @@ describe('ProductPipe', () => {
     // Assert (expect)
     expect(result).toEqual(prodArray);
 
+  });
+
+  it('should find Pusher when search is push', () => {
+    const prodArray  = TempDataService.products;
+    const pipe = new ProductPipe();
+
+    let result: Product[] = pipe.transform(prodArray, 'push');
+    expect(result.length).toEqual(1);
+    expect(result[0].name).toEqual('Pusher');
+
   })
 });
